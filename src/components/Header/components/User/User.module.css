@@ -1,0 +1,20 @@
+.userWrapper {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.userName {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .userName {
+    display: none;
+  }
+
+  .userIcon {
+    width: 30px;
+    height: 30px;
+  }
+}

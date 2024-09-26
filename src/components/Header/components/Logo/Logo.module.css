@@ -1,0 +1,5 @@
+@media (max-width: 768px) {
+  .logo {
+    content: url("/public/logo-mini.png");
+  }
+}

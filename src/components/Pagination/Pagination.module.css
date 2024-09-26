@@ -1,0 +1,50 @@
+.paginationWrapper {
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #010515;
+}
+
+.pageButton {
+  width: 30px;
+  height: 27px;
+  background-color: var(--secondary-color);
+  border: none;
+  border-right: 1px solid var(--border-color);
+  font-size: 12px;
+}
+
+.prevButton,
+.nextButton {
+  width: 27px;
+  height: 27px;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 5px;
+}
+
+.prevButton {
+  border-radius: 5px 0 0 5px;
+  border-right: 1px solid var(--border-color);
+}
+
+@media (max-width: 1024px) {
+  .pageButton {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .prevButton,
+  .nextButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrowIcon {
+    width: 15px;
+    height: 15px;
+  }
+}

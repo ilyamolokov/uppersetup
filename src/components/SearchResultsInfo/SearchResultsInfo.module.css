@@ -1,0 +1,24 @@
+.searchResultsInfoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.searchInfoText {
+  font-size: 22px;
+  font-weight: normal;
+}
+.resultsCount {
+  font-weight: 500;
+  min-width: 97px;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

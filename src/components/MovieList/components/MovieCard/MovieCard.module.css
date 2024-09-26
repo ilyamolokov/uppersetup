@@ -1,0 +1,32 @@
+.movieCardWrapper {
+  width: 245px;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.posterWrapper {
+  width: 100%;
+  height: 270px;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movieInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  gap: 5px;
+  margin: 0 13px;
+}
+
+@media (max-width: 1024px) {
+  .movieInfoWrapper {
+    align-items: center;
+  }
+}
+
+
