@@ -1,16 +1,16 @@
-import styles from "./MovieCard.module.css";
+import styles from './MovieCard.module.css'
 
 interface MovieCardProps {
-  title: string;
-  year: string;
-  imdbID: string;
-  type: string;
-  posterSrc: string;
+  title: string
+  year: string
+  imdbID: string
+  type: string
+  posterSrc: string
 }
 const MovieCard = (props: MovieCardProps) => {
-  const { title, year, imdbID, type, posterSrc } = props;
+  const { title, year, imdbID, type, posterSrc } = props
 
-  const isPoster = posterSrc && posterSrc !== "N/A";
+  const isPoster = posterSrc && posterSrc !== 'N/A'
 
   return (
     <div className={styles.movieCardWrapper}>
@@ -35,7 +35,7 @@ const MovieCard = (props: MovieCardProps) => {
         <span>Type: {type}</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MovieCard;
+export default MovieCard

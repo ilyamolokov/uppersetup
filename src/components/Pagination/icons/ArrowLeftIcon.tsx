@@ -15,6 +15,6 @@ const ArrowLeftIcon = ({ className }: { className?: string }) => {
         fill="#929BBC"
       />
     </svg>
-  );
-};
-export default ArrowLeftIcon;
+  )
+}
+export default ArrowLeftIcon

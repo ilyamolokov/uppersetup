@@ -1,4 +1,4 @@
-import styles from "./Spinner.module.css";
+import styles from './Spinner.module.css'
 
 const Spinner = () => {
   return (
@@ -9,9 +9,9 @@ const Spinner = () => {
       width="50"
       height="50"
       style={{
-        shapeRendering: "auto",
-        display: "block",
-        background: "rgb(255, 255, 255)",
+        shapeRendering: 'auto',
+        display: 'block',
+        background: 'rgb(255, 255, 255)',
       }}
       className={styles.spinner}
     >
@@ -30,6 +30,6 @@ const Spinner = () => {
         <g data-idx="4"></g>
       </g>
     </svg>
-  );
-};
-export default Spinner;
+  )
+}
+export default Spinner

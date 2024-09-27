@@ -22,6 +22,6 @@ const UserIcon = ({ className }: { className?: string }) => {
         </clipPath>
       </defs>
     </svg>
-  );
-};
-export default UserIcon;
+  )
+}
+export default UserIcon

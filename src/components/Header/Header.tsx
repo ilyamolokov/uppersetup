@@ -1,8 +1,8 @@
-import Logo from "./components/Logo/Logo";
-import SearchInput from "./components/SearchInput/SearchInput";
-import User from "./components/User/User";
+import Logo from './components/Logo/Logo'
+import SearchInput from './components/SearchInput/SearchInput'
+import User from './components/User/User'
 
-import styles from "./Header.module.css";
+import styles from './Header.module.css'
 
 const Header = () => {
   return (
@@ -11,7 +11,7 @@ const Header = () => {
       <SearchInput />
       <User />
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

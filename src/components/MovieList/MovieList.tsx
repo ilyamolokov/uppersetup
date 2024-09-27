@@ -1,27 +1,28 @@
-import { useMovies } from "../../context/MovieContext";
-import Error from "../Error/Error";
-import Spinner from "../Spinner/Spinner";
-import MovieCard from "./components/MovieCard/MovieCard";
+import { useMovies } from '../../context/MovieContext'
+import Error from '../Error/Error'
+import Spinner from '../Spinner/Spinner'
+import MovieCard from './components/MovieCard/MovieCard'
 
-import styles from "./MovieList.module.css";
+import styles from './MovieList.module.css'
 
 const MovieList = () => {
-  const { movies, debouncedSearchValue, isLoading, isError } = useMovies();
+  const { movies, debouncedSearchValue, isLoading, isError, apiErrorMessage } =
+    useMovies()
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (isError) {
-    return <Error />;
+    return <Error />
+  }
+
+  if (apiErrorMessage) {
+    return <span>{apiErrorMessage}</span>
   }
 
   if (!movies.length && !debouncedSearchValue) {
-    return <span>Enter a movie title to search...</span>;
-  }
-
-  if (!movies.length && debouncedSearchValue) {
-    return <span>No movies found</span>;
+    return <span>Enter a movie title to search...</span>
   }
 
   return (
@@ -37,7 +38,7 @@ const MovieList = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default MovieList;
+export default MovieList

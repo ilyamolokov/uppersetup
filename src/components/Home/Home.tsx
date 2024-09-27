@@ -1,11 +1,10 @@
-import React from "react";
-import Header from "../Header/Header";
+import Header from '../Header/Header'
 
-import SearchResultsInfo from "../SearchResultsInfo/SearchResultsInfo";
-import MovieList from "../MovieList/MovieList";
-import Pagination from "../Pagination/Pagination";
+import SearchResultsInfo from '../SearchResultsInfo/SearchResultsInfo'
+import MovieList from '../MovieList/MovieList'
+import Pagination from '../Pagination/Pagination'
 
-import styles from "./Home.module.css";
+import styles from './Home.module.css'
 
 const Home = () => {
   return (
@@ -26,7 +25,7 @@ const Home = () => {
         <Pagination />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

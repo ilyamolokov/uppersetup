@@ -1,7 +1,7 @@
 .spinner {
   transform-origin: center;
   animation: spin 1s infinite linear;
-  shape-rendering: "auto";
+  shape-rendering: 'auto';
   background: rgb(255, 255, 255);
 }
 @keyframes spin {

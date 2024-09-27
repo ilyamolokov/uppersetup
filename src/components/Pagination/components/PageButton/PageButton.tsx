@@ -1,15 +1,15 @@
-import { useMovies } from "../../../../context/MovieContext";
+import { useMovies } from '../../../../context/MovieContext'
 
-import styles from "./PageButton.module.css";
+import styles from './PageButton.module.css'
 
 interface PageButtonProps {
-  label: number | string;
-  onClick: () => void;
+  label: number | string
+  onClick: () => void
 }
 
 const PageButton = (props: PageButtonProps) => {
-  const { label, onClick } = props;
-  const { currentPage } = useMovies();
+  const { label, onClick } = props
+  const { currentPage } = useMovies()
 
   return (
     <button
@@ -20,7 +20,7 @@ const PageButton = (props: PageButtonProps) => {
     >
       {label}
     </button>
-  );
-};
+  )
+}
 
-export default PageButton;
+export default PageButton

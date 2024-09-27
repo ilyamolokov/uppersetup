@@ -15,6 +15,6 @@ const SearchIcon = ({ className }: { className?: string }) => {
         fill="#929BBC"
       />
     </svg>
-  );
-};
-export default SearchIcon;
+  )
+}
+export default SearchIcon

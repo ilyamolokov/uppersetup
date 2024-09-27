@@ -1,24 +1,25 @@
-import { IApiResponse } from "../components/@types/types";
+import { IApiResponseError, IApiResponseSuccess } from '../@types/types'
 
 export const searchMovies = async (
   searchValue: string,
-  page: number
-): Promise<IApiResponse | undefined> => {
-  const url = process.env.REACT_APP_API_URL ?? "";
+  page: number,
+): Promise<IApiResponseSuccess | IApiResponseError | undefined> => {
+  const url = process.env.REACT_APP_API_URL ?? ''
 
   const params = new URLSearchParams({
     s: searchValue,
     page: String(page),
-  }).toString();
-  
+  }).toString()
+
   try {
-    const response = await fetch(`${url}&${params}`);
-    if (response.ok) {
-      return response.json();
+    const response = await fetch(`${url}&${params}`)
+
+    if (!response.ok) {
+      throw new Error('Something went wrong')
     }
 
-    throw new Error("Something went wrong");
+    return response.json()
   } catch (e) {
-    console.log(e);
+    console.log(e)
   }
-};
+}
