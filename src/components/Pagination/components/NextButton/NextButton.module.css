@@ -1,0 +1,19 @@
+.nextButton {
+  width: 27px;
+  height: 27px;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 0 5px 5px 0;
+}
+
+@media (max-width: 1024px) {
+  .nextButton {
+    width: 35px;
+    height: 35px;
+  }
+
+  .arrowRightIcon {
+    width: 15px;
+    height: 15px;
+  }
+}

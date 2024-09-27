@@ -1,0 +1,20 @@
+.pageButton {
+  width: 30px;
+  height: 27px;
+  background-color: var(--secondary-color);
+  border: none;
+  border-right: 1px solid var(--border-color);
+  font-size: 12px;
+}
+
+.active {
+  background-color: var(--active-color);
+}
+
+@media (max-width: 1024px) {
+  .pageButton {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}

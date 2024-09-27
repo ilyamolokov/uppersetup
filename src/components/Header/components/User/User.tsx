@@ -1,4 +1,4 @@
-import UserIcon from "../../../../icons/UserIcon";
+import UserIcon from "../../icons/UserIcon";
 import styles from "./User.module.css";
 
 const User = () => {

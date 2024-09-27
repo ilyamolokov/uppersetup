@@ -1,27 +1,35 @@
 import styles from "./MovieCard.module.css";
 
 interface MovieCardProps {
-  name: string;
+  title: string;
   year: string;
   imdbID: string;
   type: string;
-  imageSrc: string;
+  posterSrc: string;
 }
 const MovieCard = (props: MovieCardProps) => {
-  const { name, year, imdbID, type, imageSrc } = props;
+  const { title, year, imdbID, type, posterSrc } = props;
+
+  const isPoster = posterSrc && posterSrc !== "N/A";
 
   return (
     <div className={styles.movieCardWrapper}>
-      <div className={styles.posterWrapper}>
-        {imageSrc ? (
-          <img src={imageSrc} alt="movie-poster" />
-        ) : (
+      {isPoster ? (
+        <div className={styles.moviePosterWrapper}>
+          <img
+            src={posterSrc}
+            alt="movie-poster"
+            className={styles.moviePoster}
+          />
+        </div>
+      ) : (
+        <div className={styles.placeholderWrapper}>
           <img src="./poster-placeholder.png" alt="poster-placeholder" />
-        )}
-      </div>
+        </div>
+      )}
 
       <div className={styles.movieInfoWrapper}>
-        <span>Name: {name}</span>
+        <span>Name: {title}</span>
         <span>Year: {year}</span>
         <span>imdbID: {imdbID}</span>
         <span>Type: {type}</span>

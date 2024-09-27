@@ -1,18 +1,33 @@
 .movieCardWrapper {
-  width: 245px;
   display: flex;
   flex-direction: column;
   gap: 23px;
+  width: 245px;
+  align-items: center;
 }
 
-.posterWrapper {
-  width: 100%;
+.placeholderWrapper {
+  width: 245px;
   height: 270px;
   border: 1px solid var(--primary-color);
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.moviePosterWrapper {
+  height: 270px;
+  width: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--primary-color);
+}
+
+.moviePoster {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .movieInfoWrapper {
@@ -26,7 +41,6 @@
 @media (max-width: 1024px) {
   .movieInfoWrapper {
     align-items: center;
+    text-align: center;
   }
 }
-
-

@@ -1,4 +1,4 @@
-.searchInputWrapper {
+.searchInputFormWrapper {
   width: 100%;
   height: 40px;
   max-width: 280px;
@@ -9,6 +9,10 @@
   border-radius: 5px;
   padding: 0px 15px;
   gap: 5px;
+}
+
+.focused {
+  outline: 1px solid var(--primary-color);
 }
 
 .searchInput {
@@ -23,4 +27,10 @@
 
 .searchInput::placeholder {
   color: #929bbc;
+}
+
+.searchButton {
+  border: none;
+  background-color: transparent;
+  padding: 0;
 }

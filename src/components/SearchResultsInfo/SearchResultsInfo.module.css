@@ -1,14 +1,17 @@
 .searchResultsInfoWrapper {
   display: flex;
   align-items: center;
+  overflow: hidden;
   gap: 17px;
 }
 
 .searchInfoText {
   font-size: 22px;
   font-weight: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
-.resultsCount {
+.totalMovies {
   font-weight: 500;
   min-width: 97px;
   color: var(--secondary-color);
@@ -22,3 +25,8 @@
   align-items: center;
 }
 
+@media (max-width: 1024px) {
+  .searchInfoText {
+    font-size: 18px;
+  }
+}
