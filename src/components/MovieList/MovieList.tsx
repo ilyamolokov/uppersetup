@@ -6,10 +6,10 @@ import MovieCard from './components/MovieCard/MovieCard'
 import styles from './MovieList.module.css'
 
 const MovieList = () => {
-  const { movies, debouncedSearchValue, isLoading, isError, apiErrorMessage } =
+  const { movies, debouncedSearchValue, isFetching, isError, apiErrorMessage } =
     useMovies()
 
-  if (isLoading) {
+  if (isFetching) {
     return <Spinner />
   }
 

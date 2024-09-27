@@ -6,9 +6,8 @@ import { useSearchParams } from 'react-router-dom'
 import styles from './SearchInput.module.css'
 
 const SearchInput = () => {
-  const { isLoading, setSearchValue, setCurrentPage } = useMovies()
-  let [_, setSearchParams] = useSearchParams()
-
+  const { isFetching, setSearchValue } = useMovies()
+  const [_, setSearchParams] = useSearchParams()
   const [isFocused, setIsFocused] = useState(false)
 
   const handleFocus = () => setIsFocused(true)
@@ -16,13 +15,14 @@ const SearchInput = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    setSearchValue(value)
 
     if (!value) {
+      setSearchValue('')
       return setSearchParams({})
     }
 
-    setCurrentPage(1)
+    setSearchValue(value)
+    setSearchParams(new URLSearchParams({ search: value }))
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -53,10 +53,10 @@ const SearchInput = () => {
       />
       <button
         className={styles.searchButton}
-        disabled={isLoading}
+        disabled={isFetching}
         type="submit"
       >
-        {isLoading ? '...' : <SearchIcon />}
+        {isFetching ? '...' : <SearchIcon />}
       </button>
     </form>
   )

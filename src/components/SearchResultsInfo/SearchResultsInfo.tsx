@@ -3,9 +3,9 @@ import { useMovies } from '../../context/MovieContext'
 import styles from './SearchResultsInfo.module.css'
 
 const SearchResultsInfo = () => {
-  const { debouncedSearchValue, totalMovies, isLoading } = useMovies()
+  const { debouncedSearchValue, totalMovies, isFetching } = useMovies()
 
-  if (!debouncedSearchValue || isLoading) {
+  if (!debouncedSearchValue || isFetching) {
     return null
   }
 

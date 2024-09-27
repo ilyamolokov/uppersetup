@@ -1,15 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 import { IMovie } from '../@types/types'
 import { useDebounce } from '@uidotdev/usehooks'
-import { searchMovies } from '../api/searchMovies'
+import { fetchMovies } from '../api/fetchMovies'
 import { useSearchParams } from 'react-router-dom'
 
 interface IMovieContext {
   movies: IMovie[]
   currentPage: number
   setCurrentPage: (page: number) => void
-  isLoading: boolean
+  isFetching: boolean
   isError: boolean
   setSearchValue: React.Dispatch<React.SetStateAction<string>>
   totalMovies: number
@@ -21,7 +21,7 @@ const MovieContext = createContext<IMovieContext>({
   movies: [],
   currentPage: 0,
   setCurrentPage: () => {},
-  isLoading: false,
+  isFetching: false,
   isError: false,
   setSearchValue: () => {},
   totalMovies: 0,
@@ -35,61 +35,57 @@ export const MovieProvider = ({ children }: { children: React.ReactNode }) => {
   const [searchValue, setSearchValue] = useState('')
   const debouncedSearchValue = useDebounce(searchValue, 500)
 
-  const [totalMovies, setTotalMovies] = useState(0)
-
-  let [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const currentPage = Number(searchParams.get('page') ?? 1)
 
-  const [apiErrorMessage, setApiErrorMessage] = useState('')
-
-  const { data, isFetching, error } = useQuery(
-    ['fetchMovies', debouncedSearchValue, currentPage],
-    async () => {
-      setApiErrorMessage('')
-      const data = await searchMovies(debouncedSearchValue, currentPage)
-      if (!data) return
-
-      const isApiError = data.Response === 'False'
-
-      if (isApiError) {
-        setApiErrorMessage(data.Error)
-        return []
-      }
-
-      const totalMovies = Number(data.totalResults)
-      const isSuccess = data.Response === 'True' && totalMovies
-
-      setTotalMovies(isSuccess ? totalMovies : 0)
-
-      const params = new URLSearchParams({
-        search: debouncedSearchValue,
-        page: String(currentPage),
-      })
-
-      setSearchParams(isSuccess ? params : {})
-
-      return isSuccess ? data.Search : []
-    },
-    {
-      enabled: !!debouncedSearchValue && !!currentPage,
-    },
-  )
-
   const setCurrentPage = (page: number) => {
-    const params = new URLSearchParams({
-      search: debouncedSearchValue,
-      page: String(page),
-    })
-    setSearchParams(params)
+    setSearchParams(
+      new URLSearchParams({
+        search: debouncedSearchValue,
+        page: String(page),
+      }),
+    )
   }
+
+  const {
+    data = { Response: 'False', Error: '' },
+    isFetching,
+    error,
+  } = useQuery({
+    queryKey: ['fetchMovies', debouncedSearchValue, currentPage],
+    staleTime: Infinity,
+    queryFn: () => fetchMovies(debouncedSearchValue, currentPage),
+    enabled: !!debouncedSearchValue && !!currentPage,
+  })
+
+  const totalMovies = useMemo(() => {
+    if (!data || data.Response === 'False') {
+      return 0
+    }
+    return Number(data.totalResults)
+  }, [data])
+
+  const apiErrorMessage = useMemo(() => {
+    if (!data || data.Response === 'True') {
+      return ''
+    }
+    return data.Error
+  }, [data])
+
+  const movies = useMemo(() => {
+    if (!data || data.Response === 'False' || !data.Search) {
+      return []
+    }
+    return data.Search
+  }, [data])
 
   return (
     <MovieContext.Provider
       value={{
-        movies: data ?? [],
+        movies,
         totalMovies,
-        isLoading: isFetching,
+        isFetching,
         isError: Boolean(error),
         apiErrorMessage,
 

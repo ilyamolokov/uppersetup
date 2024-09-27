@@ -7,7 +7,7 @@ import { generatePages } from './utils/generatePages'
 import styles from './Pagination.module.css'
 
 const Pagination = () => {
-  const { movies, currentPage, totalMovies, setCurrentPage, isLoading } =
+  const { movies, currentPage, totalMovies, setCurrentPage, isFetching } =
     useMovies()
 
   const totalPages = Math.ceil(totalMovies / 10)
@@ -28,7 +28,7 @@ const Pagination = () => {
     setCurrentPage(page)
   }
 
-  if (!movies.length || isLoading) {
+  if (!movies.length || isFetching) {
     return null
   }
 
