@@ -12,7 +12,7 @@ yarn install
 REACT_APP_API_URL=
 ```
 
-Запустите бота:
+Запустите:
 
 ```bash
 npm run start
